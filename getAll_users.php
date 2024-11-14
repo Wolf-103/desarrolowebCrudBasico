@@ -3,7 +3,6 @@ include 'includes/formato_error.php';
 
 try {
     include 'includes/conexion_mariadb.php';
-
     /**
      * Generamos la consulta
      */

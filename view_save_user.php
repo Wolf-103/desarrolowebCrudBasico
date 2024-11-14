@@ -14,7 +14,7 @@
             <input type="text" name="username" placeholder="Username" class="form-control mb-2" required
                 value="<?php echo isset($_GET['username']) ? htmlspecialchars($_GET['username']) : ''; ?>"
                 minlength="4" maxlength="45">
-            <input type="password" name="password" placeholder="Password" class="form-control mb-2" required minlength="16" maxlength="60">
+            <input type="password" name="password" placeholder="Password" class="form-control mb-2" required minlength="8" maxlength="60">
             <input type="email" name="email" placeholder="Email" class="form-control mb-2"
                 value="<?php echo isset($_GET['email']) ? htmlspecialchars($_GET['email']) : ''; ?>"
                 maxlength="255">
