@@ -6,7 +6,7 @@ include "model/config.php";
 // $base_datos = "dwdemo";
 
 try {
-    include "../install.php";
+    include "install.php";
     $database = new Connection();
 
     /**

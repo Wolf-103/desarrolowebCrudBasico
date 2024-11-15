@@ -9,7 +9,8 @@ class Connection
     private $type_database = "mysql";
     private $charset = "utf8mb4";
 
-    public function __construct($host = "localhost", $user = "root", $pass = "Donna*103", $data_base = "dwdemo", $type_database = "mysql", $charset = "utf8mb4") {
+    public function __construct($host = "localhost", $user = "root", $pass = "Donna*103", $data_base = "dwdemo", $type_database = "mysql", $charset = "utf8mb4")
+    {
         $this->host = $host;
         $this->user = $user;
         $this->pass = $pass;
@@ -18,33 +19,41 @@ class Connection
         $this->charset = $charset;
     }
 
-    public function getUrlConnection()
+    // Permitir crear una conexión sin especificar la base de datos
+    public function getUrlConnection($withDatabase = true)
     {
-        return $this->type_database . ":host=" . $this->host . ";dbname=" . $this->data_base . ";charset=" . $this->charset;
+        if ($withDatabase) {
+            return $this->type_database . ":host=" . $this->host . ";dbname=" . $this->data_base . ";charset=" . $this->charset;
+        }
+        return $this->type_database . ":host=" . $this->host . ";charset=" . $this->charset;
     }
 
-    public function getUser(){
+    public function getUser()
+    {
         return $this->user;
     }
 
-    public function getPass(){
+    public function getPass()
+    {
         return $this->pass;
     }
 
-    public function getDatabaseName(){
+    public function getDatabaseName()
+    {
         return $this->data_base;
     }
 
-    public function getHost(){
+    public function getHost()
+    {
         return $this->host;
     }
-    
-    public function getCharset(){
+
+    public function getCharset()
+    {
         return $this->charset;
     }
-    public function getType_database(){
+    public function getType_database()
+    {
         return $this->type_database;
     }
 }
-
-?>
