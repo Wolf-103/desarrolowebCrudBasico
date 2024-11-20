@@ -24,6 +24,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'save') {
     <div class="container mt-5">
         <div class="mb-3">
             <a class="btn btn-primary" href="view_save_user.php">Nuevo</a>
+            <a class="btn btn-primary m-3" href="view_findUser.html" >Buscar Usuario en Json</a>
         </div>
         <div>
             <?php include 'getAll_users.php'; ?>

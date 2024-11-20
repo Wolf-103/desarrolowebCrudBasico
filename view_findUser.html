@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container m-5">
+    <div class="mb-3">
+        <a class="btn btn-primary" href="view_list_users.php" >Lista de Usuarios</a>
+    </div>
+    <h1 class="mb-3">Buscar Usuario</h1>
+        <form id="findUserForm" class="row g-3">
+            <div class="col-auto">
+                <input type="number" class="form-control" name="param" id="param"  min="1" placeholder="Ingresar id del usuario..." require>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </form>
+        <div class="mt-4">
+            <label for="jsonResult" class="form-label">Resultado en formato JSON:</label>
+            <textarea id="jsonResult" class="form-control" rows="10" readonly></textarea>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('findUserForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
+
+            const formData = new FormData(this);
+            fetch('findUser.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar el resultado en el textarea
+                const jsonResult = document.getElementById('jsonResult');
+                jsonResult.value = JSON.stringify(data, null, 4); // Formatear JSON
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('jsonResult').value = "Ocurrió un error al procesar la solicitud.";
+            });
+        });
+    </script>
+</body>
+
+</html>
